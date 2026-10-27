@@ -27,6 +27,9 @@ export const PullRequestMarkdownContext = createContext<{
   repository: string | null;
 } | null>(null);
 
+const PULL_REQUEST_VIDEO_CLASS_NAME =
+  "aspect-[var(--video-aspect,16/9)] w-[min(100%,calc(70vh*var(--video-aspect,16/9)))] rounded-lg border border-border/60";
+
 function PullRequestHostVideo({
   environmentId,
   cwd,
@@ -56,7 +59,7 @@ function PullRequestHostVideo({
       originalUrl={url}
       label="Pull request video"
       className="w-full"
-      videoClassName="rounded-lg border border-border/60"
+      videoClassName={PULL_REQUEST_VIDEO_CLASS_NAME}
       onRetry={refreshAssetUrl}
     />
   );
@@ -158,7 +161,7 @@ function PullRequestBodySegmentView({
         originalUrl={segment.url}
         label="Pull request video"
         className="w-full"
-        videoClassName="rounded-lg border border-border/60"
+        videoClassName={PULL_REQUEST_VIDEO_CLASS_NAME}
       />
     );
   }
